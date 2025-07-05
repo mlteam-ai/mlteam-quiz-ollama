@@ -1,0 +1,11 @@
+FROM ollama/ollama:0.9.5
+
+ENV OLLAMA_HOST=0.0.0.0:8080
+
+ENV OLLAMA_MODELS=/models
+
+ENV OLLAMA_DEBBUG=true
+
+ENV OLLAMA_KEEP_ALIVE=-1
+
+ENTRYPOINT ["ollama", "serve"]
