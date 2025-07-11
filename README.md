@@ -82,11 +82,12 @@ Build the Docker image for the Ollama server and deploy it to Cloud Run.
       --platform managed \
       --region europe-west1 \
       --no-allow-unauthenticated \
+      --no-cpu-throttling \
       --timeout=3600 \
       --max-instances=1 \
       --min-instances=0 \
-      --memory=8Gi \
-      --cpu=2 \
+      --memory=16Gi \
+      --cpu=4 \
       --cpu-boost \
       --execution-environment=gen2 \
       --add-volume=name=model-vol,type=cloud-storage,bucket=mlteam-ollama-models \
@@ -136,7 +137,8 @@ Here’s how to test your newly deployed Ollama server.
           -H "Content-Type: application/json" \
           -d '{
             "model": "gemma3n:e4b",
-            "prompt": "Why is the sky blue?"
+            "prompt": "Why is the sky blue?",
+            "stream": false
           }'
         ```
 
